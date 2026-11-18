@@ -1,5 +1,9 @@
 # 🎮 GameHub
 
+## 🏢 Contexto: CodeFactory Solutions
+
+A CodeFactory Solutions é uma software house que cresceu de 2 para 8 profissionais sem padronizar seus processos, o que causou atrasos, erros após atualizações e dificuldade de integração. Este repositório demonstra como a Cultura DevOps (Git, GitHub, Docker e CI) resolve esses problemas.
+
 ## 📌 O contexto
 
 Projeto desenvolvido para a disciplina de **DevOps e Integração Contínua** com o objetivo de demonstrar, de forma prática, diferentes etapas do ciclo de desenvolvimento e entrega de software.
@@ -639,3 +643,4 @@ http://localhost:3000
     ↓
 GameHub funcionando ✅
 ```
+
