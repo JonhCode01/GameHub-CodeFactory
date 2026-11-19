@@ -8,10 +8,12 @@ on:
   push:
     branches:
       - main
+      - desenvolvimento
 
   pull_request:
     branches:
       - main
+      - desenvolvimento
 
 
 # Um workflow pode possuir vários jobs, por exemplo:
@@ -103,6 +105,21 @@ jobs:
       # public/js/script.js
       - name: Validar sintaxe front-end
         run: node --check ../public/js/script.js
+
+      # Cria o arquivo de variáveis a partir do exemplo versionado.
+      # O arquivo real (com senhas) nunca vai para o GitHub.
+      - name: Preparar variáveis de ambiente
+        run: cp .env.docker.example .env.docker
+
+      # Valida a sintaxe e as variáveis do docker-compose.
+      - name: Validar Docker Compose
+        working-directory: .
+        run: docker compose config --quiet
+
+      # Constrói a imagem do GameHub, como no ambiente local.
+      - name: Construir imagem Docker
+        working-directory: .
+        run: docker build -t gamehub .
 
 
 # ==========================================================
