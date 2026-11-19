@@ -416,6 +416,56 @@ function fecharModal() {
     limparModal();
 }
 
+async function excluirJogo(jogo) {
+
+    const confirmado = confirm(
+        `Deseja realmente excluir "${jogo.nome}" da biblioteca?`
+    );
+
+    if (!confirmado) {
+        return;
+    }
+
+    try {
+
+        const resposta = await fetch(
+            `/api/jogos/${jogo.id}`,
+            {
+                method: "DELETE"
+            }
+        );
+
+        const dados = await resposta.json();
+
+        if (!resposta.ok) {
+
+            throw new Error(
+                dados.erro ||
+                "Não foi possível excluir o jogo."
+            );
+
+        }
+
+        alert(dados.mensagem);
+
+        await carregarBiblioteca(
+            campoPesquisa.value.trim(),
+            1
+        );
+
+    } catch (erro) {
+
+        console.error(
+            "Erro ao excluir jogo:",
+            erro
+        );
+
+        alert(erro.message);
+
+    }
+
+}
+
 function criarCardBiblioteca(jogo) {
 
     const card = document.createElement("article");
@@ -446,8 +496,18 @@ function criarCardBiblioteca(jogo) {
         ? "★".repeat(jogo.avaliacao)
         : "Sem avaliação";
 
+        const btnExcluir = document.createElement("button");
+    btnExcluir.type = "button";
+    btnExcluir.classList.add("btn-excluir");
+    btnExcluir.textContent = "Excluir";
+
+    btnExcluir.addEventListener("click", () => {
+        excluirJogo(jogo);
+    });
+
     informacoes.appendChild(nome);
     informacoes.appendChild(avaliacao);
+    informacoes.appendChild(btnExcluir);
 
     card.appendChild(imagem);
     card.appendChild(informacoes);

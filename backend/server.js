@@ -480,6 +480,52 @@ app.get("/api/biblioteca", async (req, res) => {
 
 });
 
+app.delete("/api/jogos/:id", async (req, res) => {
+
+    try {
+
+        const id = parseInt(req.params.id, 10);
+
+        if (!id) {
+
+            return res.status(400).json({
+                erro: "ID de jogo inválido."
+            });
+
+        }
+
+        const [resultado] = await pool.execute(
+            "DELETE FROM jogos WHERE id = ?",
+            [id]
+        );
+
+        if (resultado.affectedRows === 0) {
+
+            return res.status(404).json({
+                erro: "Jogo não encontrado."
+            });
+
+        }
+
+        return res.json({
+            mensagem: "Jogo excluído com sucesso!"
+        });
+
+    } catch (erro) {
+
+        console.error(
+            "Erro ao excluir jogo:",
+            erro.message
+        );
+
+        return res.status(500).json({
+            erro: "Erro interno ao excluir jogo."
+        });
+
+    }
+
+});
+
 // Rota de Health Check
 // Utilizada para verificar se a aplicação está funcionando 
 // e se comunicando com o banco
