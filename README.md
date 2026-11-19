@@ -175,7 +175,7 @@ git clone URL_DO_REPOSITORIO
 Exemplo:
 
 ```bash
-git clone https://github.com/SEU_USUARIO/SEU_REPOSITORIO.git
+git clone https://github.com/JonhCode01/GameHub-CodeFactory.git GameHub-CodeFactory
 ```
 
 Depois entre na pasta:
