@@ -644,3 +644,10 @@ http://localhost:3000
 GameHub funcionando ✅
 ```
 
+---
+
+# 🐳 Por que utilizar containers neste projeto?
+
+O GameHub depende de Node.js e MySQL. Sem containers, cada desenvolvedor precisaria instalar e configurar os dois na própria máquina, o que gera diferenças de versão e demora para integrar novos colaboradores, problemas relatados pela CodeFactory Solutions.
+
+Com Docker e Docker Compose, o ambiente completo sobe com um único comando (`docker compose up --build`), é idêntico para toda a equipe, isola o banco da máquina local e mantém os dados em um volume persistente.
