@@ -1,5 +1,9 @@
 # 🎮 GameHub
 
+## 🏢 Contexto: CodeFactory Solutions
+
+A CodeFactory Solutions é uma software house que cresceu de 2 para 8 profissionais sem padronizar seus processos, o que causou atrasos, erros após atualizações e dificuldade de integração. Este repositório demonstra como a Cultura DevOps (Git, GitHub, Docker e CI) resolve esses problemas.
+
 ## 📌 O contexto
 
 Projeto desenvolvido para a disciplina de **DevOps e Integração Contínua** com o objetivo de demonstrar, de forma prática, diferentes etapas do ciclo de desenvolvimento e entrega de software.
@@ -171,7 +175,7 @@ git clone URL_DO_REPOSITORIO
 Exemplo:
 
 ```bash
-git clone https://github.com/SEU_USUARIO/SEU_REPOSITORIO.git
+git clone https://github.com/JonhCode01/GameHub-CodeFactory.git GameHub-CodeFactory
 ```
 
 Depois entre na pasta:
@@ -639,3 +643,11 @@ http://localhost:3000
     ↓
 GameHub funcionando ✅
 ```
+
+---
+
+# 🐳 Por que utilizar containers neste projeto?
+
+O GameHub depende de Node.js e MySQL. Sem containers, cada desenvolvedor precisaria instalar e configurar os dois na própria máquina, o que gera diferenças de versão e demora para integrar novos colaboradores, problemas relatados pela CodeFactory Solutions.
+
+Com Docker e Docker Compose, o ambiente completo sobe com um único comando (`docker compose up --build`), é idêntico para toda a equipe, isola o banco da máquina local e mantém os dados em um volume persistente.
